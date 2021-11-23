@@ -1,0 +1,5 @@
+<p>{{selectedProduct?.Id}}</p>
+<app-first (notify)="showDetails($event)"
+           [products]="specialOffers">
+</app-first>
+<app-product-details [product]="selectedProduct"></app-product-details>

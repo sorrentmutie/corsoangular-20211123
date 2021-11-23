@@ -1,0 +1,31 @@
+<div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+  <div class="card-header">{{currentProduct?.Name}}</div>
+  <div class="card-body">
+    <h4 class="card-title" *ngIf="currentProduct && currentProduct.Category">
+      {{currentProduct.Category.Name}}</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+
+<table class="table table-striped table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Date</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.Id}}</td>
+      <td>{{product.Name | my | uppercase}}</td>
+      <td>{{product.Category | category}}</td>
+      <td>{{product.AvailabilityDate | date:'dd/MM/yyyy: HH:mm'}}</td>
+      <td>{{product.Price | currency: 'EUR'}}</td>
+      <td><button (click)="showDetails(product)" class="btn btn-info">Details</button></td>
+    </tr>
+  </tbody>
+</table>
