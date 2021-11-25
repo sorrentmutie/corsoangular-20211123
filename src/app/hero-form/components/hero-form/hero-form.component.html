@@ -1,0 +1,26 @@
+<h2>Il form dell'eroe</h2>
+
+<form #heroForm="ngForm">
+  <div class="form-group">
+    <label for="Nome">Nome</label>
+    <input  [(ngModel)]="modello.name" required type="text" class="form-control" id="Nome" name="Nome">
+  </div>
+
+
+
+  <div class="form-group">
+    <label for="AlterEgo">Alter-Ego</label>
+    <input [(ngModel)]="modello.alterEgo" required type="text" class="form-control" id="AlterEgo" name="AlterEgo">
+  </div>
+
+  <div class="form-group">
+    <label for="SuperPotere">Super Potere</label>
+    <select [(ngModel)]="modello.power" class="form-control" name="SuperPotere" id="SuperPotere">
+      <option *ngFor="let p of powers" [value]="p">{{p}}</option>
+    </select>
+  </div>
+
+
+  <button type="submit" class="btn btn-success" style="margin-top: 10px;">OK</button>
+
+</form>

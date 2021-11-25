@@ -1,1 +1,6 @@
-<input type="text" value="{{product?.Name}}">
+<div class="form-group" *ngIf="product">
+<label for="name">Name</label>
+<input type="text" class="form-control" id="name" name="name"
+  [(ngModel)]="product.Name">
+</div>
+{{product?.Name}}

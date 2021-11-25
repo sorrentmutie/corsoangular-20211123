@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FirstComponent } from './first/first.component';
@@ -8,6 +9,9 @@ import { MyPipe } from './products-catalog/pipes/my.pipe';
 import { CategoryPipe } from './products-catalog/pipes/category.pipe';
 import { SpecialOffersComponent } from './products-catalog/pages/special-offers/special-offers.component';
 import { ProductDetailsComponent } from './products-catalog/components/product-details/product-details.component';
+import { RandomUserListComponent } from './random-users/components/random-user-list/random-user-list.component';
+import { TestFormComponent } from './shared/components/test-form/test-form.component';
+import { HeroFormComponent } from './hero-form/components/hero-form/hero-form.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +20,16 @@ import { ProductDetailsComponent } from './products-catalog/components/product-d
     MyPipe,
     CategoryPipe,
     SpecialOffersComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    RandomUserListComponent,
+    TestFormComponent,
+    HeroFormComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

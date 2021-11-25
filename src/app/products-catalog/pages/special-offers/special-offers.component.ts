@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Product } from '../../models/product';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-special-offers',
   templateUrl: './special-offers.component.html',
   styleUrls: ['./special-offers.component.css']
 })
-export class SpecialOffersComponent implements OnInit {
+export class SpecialOffersComponent implements OnDestroy  {
 
+  private subscription:  Subscription | null = null;
   specialOffers: Product[] = [];
   selectedProduct: Product | null = null;
 
@@ -16,33 +19,19 @@ export class SpecialOffersComponent implements OnInit {
     console.log(message);
   }
 
-
-  constructor() {
-    this.specialOffers.push(
-      {
-        Id :1,
-        Name: "Frigorifero",
-        Available: true,
-        Price: 1000,
-        AvailabilityDate : new Date(),
-        Category: { Id: 1, Name: "Elettrodomestici"},
-        Categories: [ { Id: 1, Name: "Elettrodomestici"}, { Id: 2, Name: "Elettrodomestici"}]
+  constructor(private productsService: ProductsService) {
+    console.log('Sono nel costruttore del componente special offers');
+    // this.specialOffers = this.productsService.getSpecialOffers();
+    this.subscription = this.productsService.getSpecialOffersFromApi().subscribe(
+      products => {
+        this.specialOffers = products;
+        console.log('chiamata API terminata');
       });
-
-    this.specialOffers.push(
-      {
-        Id :2,
-        Name: "Tv Color",
-        Available: false,
-        Price: 2000,
-        AvailabilityDate : new Date(),
-        Category: { Id: 1, Name: "TV"},
-        Categories: [ { Id: 1, Name: "Elettrodomestici"}, { Id: 2, Name: "Elettrodomestici"}]
-      }
-    );
+    console.log('Sto uscendo dal costruttore');
   }
 
-  ngOnInit(): void {
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 
 }
