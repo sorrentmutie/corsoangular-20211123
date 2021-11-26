@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import { ProductDetailsComponent } from './products-catalog/components/product-d
 import { RandomUserListComponent } from './random-users/components/random-user-list/random-user-list.component';
 import { TestFormComponent } from './shared/components/test-form/test-form.component';
 import { HeroFormComponent } from './hero-form/components/hero-form/hero-form.component';
+import { HeroReactiveFormComponent } from './hero-reactive/hero-reactive-form/hero-reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +24,14 @@ import { HeroFormComponent } from './hero-form/components/hero-form/hero-form.co
     ProductDetailsComponent,
     RandomUserListComponent,
     TestFormComponent,
-    HeroFormComponent
+    HeroFormComponent,
+    HeroReactiveFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],

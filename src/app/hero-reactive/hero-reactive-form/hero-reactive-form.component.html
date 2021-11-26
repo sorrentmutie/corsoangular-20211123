@@ -1,0 +1,23 @@
+<p>hero-reactive-form works!</p>
+
+<div *ngIf="formReattivoEroe">
+<form [formGroup]="formReattivoEroe" (ngSubmit)="submit()">
+  <div class="form-group">
+    <label for="Nome">Nome</label>
+    <input formControlName="nome" class="form form-control"
+      name="Nome" id="Nome">
+
+    <div class="alert alert-danger"
+      *ngIf="nome.invalid && (nome.dirty || nome.touched)" >
+     <div *ngIf="nome?.errors?.['required']">Obbligatorio</div>
+     <div *ngIf="nome?.errors?.['minlength']">lunghezza minima 3</div>
+     <div *ngIf="nome?.errors?.['myValidator']">Validazione Custom</div>
+    </div>
+
+
+  </div>
+
+  <button type="submit" [disabled]="formReattivoEroe.invalid"
+   class="btn btn-danger">OK</button>
+</form>
+</div>
