@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FirstComponent } from './first/first.component';
@@ -15,6 +15,9 @@ import { HeroFormComponent } from './hero-form/components/hero-form/hero-form.co
 import { HeroReactiveFormComponent } from './hero-reactive/hero-reactive-form/hero-reactive-form.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { MenuComponent } from './shared/components/menu/menu.component';
+import { MyFirstInterceptor } from './shared/interceptors/my-first.interceptor';
+import { MySecondInterceptor } from './shared/interceptors/my-second.interceptor';
+import { CustomersListComponent } from './customers/components/customers-list/customers-list.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import { MenuComponent } from './shared/components/menu/menu.component';
     HeroFormComponent,
     HeroReactiveFormComponent,
     NotFoundComponent,
-    MenuComponent
+    MenuComponent,
+    CustomersListComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,11 @@ import { MenuComponent } from './shared/components/menu/menu.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: MyFirstInterceptor, multi:true},
+    {provide: HTTP_INTERCEPTORS, useClass: MySecondInterceptor, multi:true}
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
