@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../models/product';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-product-details',
@@ -7,5 +9,14 @@ import { Product } from '../../models/product';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent  {
-  @Input() product: Product | null = null;
+  product: Product | null = null;
+
+  constructor(private route: ActivatedRoute,
+    private service: ProductsService){
+    const id = this.route.snapshot.paramMap.get('id');
+    if(id){
+      this.service.getProductById(id).subscribe(prodotto =>
+        this.product = prodotto);
+    }
+  }
 }

@@ -13,6 +13,8 @@ import { RandomUserListComponent } from './random-users/components/random-user-l
 import { TestFormComponent } from './shared/components/test-form/test-form.component';
 import { HeroFormComponent } from './hero-form/components/hero-form/hero-form.component';
 import { HeroReactiveFormComponent } from './hero-reactive/hero-reactive-form/hero-reactive-form.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { MenuComponent } from './shared/components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { HeroReactiveFormComponent } from './hero-reactive/hero-reactive-form/he
     RandomUserListComponent,
     TestFormComponent,
     HeroFormComponent,
-    HeroReactiveFormComponent
+    HeroReactiveFormComponent,
+    NotFoundComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

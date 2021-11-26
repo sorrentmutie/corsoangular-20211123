@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { debounce, debounceTime, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-test-form',
@@ -8,7 +10,20 @@ import { Component, OnInit } from '@angular/core';
 export class TestFormComponent implements OnInit {
 
   value: string = '';
-  constructor() { }
+  myInput: FormControl | null = null;
+
+  constructor() {
+    this.myInput = new FormControl('');
+    this.myInput.valueChanges.pipe(
+      filter((testo: string) => testo.length > 4),
+      debounceTime(1000)
+    )
+    .subscribe(
+      testo => {
+        console.log(testo);
+      }
+    );
+  }
 
   ngOnInit(): void {
   }

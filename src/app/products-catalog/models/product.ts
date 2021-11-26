@@ -1,6 +1,6 @@
 export interface Product {
   Name: string,
-  Id: number,
+  id: number,
   Available: boolean,
   Price: number,
   AvailabilityDate: Date,

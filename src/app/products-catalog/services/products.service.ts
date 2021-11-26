@@ -18,7 +18,7 @@ export class ProductsService {
   getSpecialOffers(): Product[] {
     this.offers.push(
       {
-        Id :1,
+        id :1,
         Name: "Frigorifero",
         Available: true,
         Price: 1000,
@@ -28,7 +28,7 @@ export class ProductsService {
       });
     this.offers.push(
         {
-          Id :2,
+          id :2,
           Name: "Tv Color",
           Available: false,
           Price: 2000,
@@ -42,6 +42,11 @@ export class ProductsService {
   getSpecialOffersFromApi(): Observable<Product[]> {
     return this.http.get<Product[]>
     (environment.productsBaseApiUrl + 'products');
+  }
+
+  getProductById(id: string): Observable<Product> {
+    return this.http.get<Product>
+    (environment.productsBaseApiUrl + 'products/' + id);
   }
 
 }
