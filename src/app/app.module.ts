@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +19,9 @@ import { MenuComponent } from './shared/components/menu/menu.component';
 import { MyFirstInterceptor } from './shared/interceptors/my-first.interceptor';
 import { MySecondInterceptor } from './shared/interceptors/my-second.interceptor';
 import { CustomersListComponent } from './customers/components/customers-list/customers-list.component';
+import { ToastrModule } from 'ngx-toastr';
+import { ToastrComponent } from './shared/components/toastr/toastr.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -33,14 +37,17 @@ import { CustomersListComponent } from './customers/components/customers-list/cu
     HeroReactiveFormComponent,
     NotFoundComponent,
     MenuComponent,
-    CustomersListComponent
+    CustomersListComponent,
+    ToastrComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule, ToastrModule.forRoot()
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: MyFirstInterceptor, multi:true},

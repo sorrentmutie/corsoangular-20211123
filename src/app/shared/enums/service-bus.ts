@@ -2,5 +2,9 @@ export enum ServiceBusEvents {
   CustomerAdded,
   CustomerDeleted,
   CustomerUpdated,
-  OrderCreated
+  OrderCreated,
+  HttpSuccess,
+  HttpFailure,
+  HttpCallStarted,
+  HttpCallEnded,
 }
